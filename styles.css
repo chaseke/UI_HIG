@@ -1,0 +1,69 @@
+/* 1. 全体の基礎設定（Appleらしいタイポグラフィと背景） */
+:root {
+  --ios-blue: #007AFF;
+  --ios-bg: #F2F2F7; /* iOSの標準的な背景色 */
+  --ios-text: #000000;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  background-color: var(--ios-bg);
+  color: var(--ios-text);
+  margin: 0;
+  min-height: 100svh;
+  padding: 16px 16px calc(16px + env(safe-area-inset-bottom)) 16px;
+  -webkit-font-smoothing: antialiased; /* 文字を滑らかに */
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.component-section {
+  margin-bottom: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* ボタン同士の余白 */
+}
+
+h1, h2 {
+  font-weight: 700;
+}
+
+/* 2. ボタンのベーススタイル (Clarity & Depth) */
+.ios-btn {
+  /* HIG: 最小タップ領域 44px 以上を確保 */
+  min-height: 50px;
+  padding: 0 20px;
+  font-size: 17px;
+  font-weight: 600;
+  border-radius: 12px; /* iOSらしい丸み */
+  border: none;
+  cursor: pointer;
+  
+  /* タップした時のアニメーション設定 */
+  transition: all 0.2s ease-out;
+  
+  /* テキスト選択を無効化し、アプリっぽくする */
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* 押下時のフィードバック (Depth: 物理的なへこみを表現) */
+.ios-btn:active {
+  transform: scale(0.96);
+  opacity: 0.8;
+}
+
+/* 3. Primary Button (主要なアクション) */
+.ios-btn-primary {
+  background-color: var(--ios-blue);
+  color: #FFFFFF;
+}
+
+/* 4. Secondary Button (Deference: 控えめなアクション) */
+.ios-btn-secondary {
+  background-color: transparent;
+  color: var(--ios-blue);
+}

@@ -1,0 +1,24 @@
+{
+  "name": "ui_hig",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/chaseke/UI_HIG#readme",
+  "bugs": {
+    "url": "https://github.com/chaseke/UI_HIG/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chaseke/UI_HIG.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "typescript": "^7.0.2",
+    "vite": "^8.1.5"
+  }
+}

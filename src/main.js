@@ -1,4 +1,4 @@
-"use strict";
+import './styles.css';
 // ボタンの要素を取得
 const testBtn = document.getElementById('test-btn');
 // タップ（クリック）イベントの登録

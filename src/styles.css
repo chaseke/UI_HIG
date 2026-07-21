@@ -69,29 +69,39 @@ h1, h2 {
 }
 
 /* --- タブバーのスタイリング --- */
+/* --- タブバーのスタイリング (Floating Island 版) --- */
 .ios-tab-bar {
   /* 画面下部に固定 */
   position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
+  
+  /* 変更点1: セーフエリアの余白を「内側(padding)」ではなく「外側(bottom)」で確保し、さらに16px浮かせる */
+  bottom: calc(16px + env(safe-area-inset-bottom));
+  
+  /* 変更点2: 画面の中央に配置するお決まりのテクニック */
+  left: 50%;
+  transform: translateX(-50%);
+  
+  /* 変更点3: 横幅を100%ではなくし、両サイドにも隙間を作る */
+  width: calc(100% - 32px);
+  max-width: 400px; /* 画面が広いiPad等でも横に伸びすぎないようにする */
   
   /* HIG: Depth (すりガラス効果) */
-  background-color: rgba(242, 242, 247, 0.75); /* iOS背景色を少し透過 */
-  backdrop-filter: blur(20px); /* 後ろの要素をぼかす */
-  -webkit-backdrop-filter: blur(20px); /* Safari対応 */
+  background-color: rgba(242, 242, 247, 0.85); /* 浮いている分、少しだけ不透明度を上げる */
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   
-  /* UIの境界線を引いてDeference(引き立て)を表現 */
-  border-top: 0.5px solid rgba(0, 0, 0, 0.15);
+  /* 変更点4: カプセル型（丸薬型）の美しい丸みを作る */
+  border-radius: 9999px;
+  
+  /* 変更点5: 浮遊感を強調するための、強めのシャドウと極細の境界線 */
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.15), 0 0 0 0.5px rgba(0, 0, 0, 0.05);
   
   display: flex;
   justify-content: space-around;
   align-items: center;
   
-  /* HIG: セーフエリアの確保 (iPhone X以降対応) */
-  padding-top: 8px;
-  /* ホームインジケーターの分だけ自動でpaddingを追加する */
-  padding-bottom: calc(8px + env(safe-area-inset-bottom));
+  /* パディングを均等にする (セーフエリアの計算はbottomに移動したため不要) */
+  padding: 12px 16px;
   
   z-index: 1000;
 }

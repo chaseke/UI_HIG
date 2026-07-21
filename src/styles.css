@@ -67,3 +67,64 @@ h1, h2 {
   background-color: transparent;
   color: var(--ios-blue);
 }
+
+/* --- タブバーのスタイリング --- */
+.ios-tab-bar {
+  /* 画面下部に固定 */
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  
+  /* HIG: Depth (すりガラス効果) */
+  background-color: rgba(242, 242, 247, 0.75); /* iOS背景色を少し透過 */
+  backdrop-filter: blur(20px); /* 後ろの要素をぼかす */
+  -webkit-backdrop-filter: blur(20px); /* Safari対応 */
+  
+  /* UIの境界線を引いてDeference(引き立て)を表現 */
+  border-top: 0.5px solid rgba(0, 0, 0, 0.15);
+  
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  
+  /* HIG: セーフエリアの確保 (iPhone X以降対応) */
+  padding-top: 8px;
+  /* ホームインジケーターの分だけ自動でpaddingを追加する */
+  padding-bottom: calc(8px + env(safe-area-inset-bottom));
+  
+  z-index: 1000;
+}
+
+.tab-item {
+  background: none;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  color: #999999; /* 非アクティブなタブはグレー */
+  cursor: pointer;
+  
+  /* ハイライト時の枠線を消す */
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* アイコンのサイズ調整 */
+.tab-item svg {
+  width: 24px;
+  height: 24px;
+  fill: currentColor; /* 文字色(color)と同じ色に自動で変わる設定 */
+}
+
+/* テキストのスタイル */
+.tab-item span {
+  font-size: 10px;
+  font-weight: 500;
+}
+
+/* アクティブなタブ (選択中) */
+.tab-item.active {
+  color: var(--ios-blue); /* 選択中はブランドカラー(青)にする */
+}

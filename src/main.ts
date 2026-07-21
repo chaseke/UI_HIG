@@ -10,3 +10,19 @@ if (testBtn) {
     alert('Primary Buttonがタップされました！');
   });
 }
+
+// --- タブバーの切り替え処理 ---
+const tabItems = document.querySelectorAll('.tab-item');
+
+tabItems.forEach(item => {
+  item.addEventListener('click', () => {
+    // 1. 現在 'active' になっているタブから 'active' を外す
+    const currentActive = document.querySelector('.tab-item.active');
+    if (currentActive) {
+      currentActive.classList.remove('active');
+    }
+    
+    // 2. クリックされたタブに新しく 'active' を付与する
+    item.classList.add('active');
+  });
+});
